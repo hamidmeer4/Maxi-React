@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
+// import ExpensesFilter from '../Expense/ExpensesFilter';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enterTitle, setEnterTitle] = useState("");
   const [enterAmount, setEnterAmount] = useState("");
   const [enterDate, setEnterDate] = useState("");
@@ -81,14 +82,17 @@ const ExpenseForm = () => {
       amount: enterAmount,
       date: new Date(enterDate),
     };
-    console.log(expenseData);
+    // console.log(expenseData);
+    props.onSaveExpenseData(expenseData)
     setEnterTitle("");
     setEnterAmount("");
     setEnterDate("");
   };
 
   return (
+    
     <form onSubmit={submitHandler}>
+      
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
